@@ -1,0 +1,68 @@
+
+## mobile-portrait
+idle status: Open a recording, or record the engine.
+samples sheet open: 1
+loaded status: Loaded: sample-1.m4a · 11.2 seconds
+crop readout changed: true -> 0:02.8 - 0:10.0 · 7.2 s
+playing: true
+result: 1614 rpm
+caption: 96 combustions marked
+range open: 1
+range choice stored: true
+data-theme: light
+canvas accent token: #1f4e79
+body background: rgb(250, 250, 250)
+sheet closed by backdrop: true
+horizontal overflow: 0 px
+console errors: none
+
+## mobile-landscape
+idle status: Open a recording, or record the engine.
+samples sheet open: 1
+loaded status: Loaded: sample-1.m4a · 11.2 seconds
+crop readout changed: true -> 0:02.8 - 0:10.0 · 7.2 s
+playing: true
+result: 1614 rpm
+caption: 96 combustions marked
+range open: 1
+range choice stored: true
+data-theme: light
+canvas accent token: #1f4e79
+body background: rgb(250, 250, 250)
+sheet closed by backdrop: true
+horizontal overflow: 0 px
+console errors: none
+
+## tablet-portrait
+idle status: Open a recording, or record the engine.
+samples sheet open: 1
+loaded status: Loaded: sample-1.m4a · 11.2 seconds
+crop readout changed: true -> 0:02.8 - 0:10.0 · 7.2 s
+playing: true
+result: 1614 rpm
+caption: 96 combustions marked
+range open: 1
+range choice stored: true
+data-theme: light
+canvas accent token: #1f4e79
+body background: rgb(250, 250, 250)
+sheet closed by backdrop: true
+horizontal overflow: 0 px
+console errors: none
+
+## tablet-landscape
+idle status: Open a recording, or record the engine.
+samples sheet open: 1
+loaded status: Loaded: sample-1.m4a · 11.2 seconds
+crop readout changed: true -> 0:02.8 - 0:10.0 · 7.2 s
+playing: true
+result: 1614 rpm
+caption: 96 combustions marked
+range open: 1
+range choice stored: true
+data-theme: light
+canvas accent token: #1f4e79
+body background: rgb(250, 250, 250)
+sheet closed by backdrop: true
+horizontal overflow: 0 px
+console errors: none

@@ -1,0 +1,43 @@
+Task 9 — where does the simulated engine stop agreeing with the analysis?
+Run 2026-09-15. revbench's render.mjs + rpm-boss's scipy baseline, with the
+search range scaled to the engine rendered (rateRangeFor's behaviour), which
+is what revbench's own check.py does not do — it grades every clip against
+the fixed four-stroke range, which is why its two-stroke table stops at 5850.
+Script: scratchpad sweep.py, a 20-line variant of check.py.
+
+
+four-stroke  (search range scaled to this engine)
+   set  c/s set  c/s read   error  conf
+   600     5.00      5.01   +0.2%  1.01 
+   800     6.67      6.65   -0.2%  1.13 
+  1100     9.17      9.19   +0.2%  1.24 
+  1600    13.33     13.34   +0.0%  1.32 
+  2500    20.83     20.87   +0.2%  1.41 
+  4000    33.33     33.33   -0.0%  1.50 
+  6000    50.00     50.04   +0.1%  1.61 
+  8000    66.67     66.80   +0.2%  1.70 
+  9500    79.17     79.20   +0.0%  1.75 
+ 10500    87.50     87.60   +0.1%  1.79 
+ 11000    91.67     91.68   +0.0%  1.78 
+ 11500    95.83     95.88   +0.1%  1.79 
+ 11700    97.50     97.66   +0.2%  1.78 
+ 12000   100.00    100.13   +0.1%  1.79 
+
+two-stroke  (search range scaled to this engine)
+   set  c/s set  c/s read   error  conf
+   600    10.00     10.00   -0.0%  1.20 
+   800    13.33     13.35   +0.1%  1.23 
+  1100    18.33     18.35   +0.1%  1.31 
+  1600    26.67     26.68   +0.0%  1.39 
+  2500    41.67     41.67   +0.0%  1.52 
+  4000    66.67     66.67   +0.0%  1.58 
+  6000   100.00    100.02   +0.0%  1.12 
+  8000   133.33    133.22   -0.1%  0.91 
+  9500   158.33    158.63   +0.2%  0.76 
+ 10500   175.00    175.69   +0.4%  0.70 
+ 11000   183.33    184.19   +0.5%  0.68 
+ 11500   191.67    192.48   +0.4%  0.66 
+ 11700   195.00    195.67   +0.3%  0.69 
+ 12000   200.00    200.60   +0.3%  0.63 
+
+highest clean speed: {2: 12000, 1: 12000}

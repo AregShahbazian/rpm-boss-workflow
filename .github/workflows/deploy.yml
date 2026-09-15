@@ -1,0 +1,35 @@
+name: Deploy to areg.nl/workflow and areg.nl/rpm-boss/workflow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-fund --no-audit
+      - run: node scripts/build.mjs
+      - name: Upload the rpm-boss docs over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: dist/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}/
+      - name: Upload the method page over FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          local-dir: dist-narrative/
+          server-dir: ${{ secrets.FTP_REMOTE_DIR_NARRATIVE }}/
