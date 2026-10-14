@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,21 +19,21 @@ jobs:
           node-version: 22
       - run: npm install --no-fund --no-audit
       - run: node scripts/build.mjs
-      - name: Upload the rpm-boss docs over FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # areg.nl is the GitHub Pages site AregShahbazian.github.io; each build
+      # replaces only its own folder there.
+      - name: Publish the rpm-boss docs
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: dist/
-          server-dir: ${{ secrets.FTP_REMOTE_DIR }}/
-      - name: Upload the method page over FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+          deploy_key: ${{ secrets.SITE_DEPLOY_KEY }}
+          external_repository: AregShahbazian/AregShahbazian.github.io
+          publish_branch: main
+          publish_dir: dist
+          destination_dir: rpm-boss/workflow
+      - name: Publish the method page
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          local-dir: dist-narrative/
-          server-dir: ${{ secrets.FTP_REMOTE_DIR_NARRATIVE }}/
+          deploy_key: ${{ secrets.SITE_DEPLOY_KEY }}
+          external_repository: AregShahbazian/AregShahbazian.github.io
+          publish_branch: main
+          publish_dir: dist-narrative
+          destination_dir: workflow
