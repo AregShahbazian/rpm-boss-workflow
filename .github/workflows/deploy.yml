@@ -29,6 +29,8 @@ jobs:
           publish_branch: main
           publish_dir: dist
           destination_dir: rpm-boss/workflow
+      # actions-gh-pages binds a fixed ssh-agent socket; free it for the second run.
+      - run: pkill ssh-agent; rm -f /tmp/ssh-auth.sock
       - name: Publish the method page
         uses: peaceiris/actions-gh-pages@v4
         with:
